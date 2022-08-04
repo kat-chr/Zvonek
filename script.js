@@ -1,5 +1,7 @@
 let client = new Paho.MQTT.Client("d57a0d1c39d54550b147b58411d86743.s2.eu.hivemq.cloud", 8884, "letni-skola" + Math.random());
 let displayingCamera = false;
+let callConnected = false;
+
 
 client.connect({
     onSuccess: onConnect,
@@ -25,7 +27,6 @@ function onMessageArrived(message) {
         let buttonNumber = message.destinationName.split("/")[3];
         console.log(buttonNumber);
         if (buttonNumber == "17") {
-            console.log("jsem tu");
             turnDoorbellOn();
             if (displayingCamera == false) {
                 turnCameraOn();
@@ -33,7 +34,7 @@ function onMessageArrived(message) {
         } else if (buttonNumber == "27") {
             toggleRecording();
         } else if (buttonNumber == "22") {
-            useButtonToLightUp(24);
+            toggleCall();
         } else if (buttonNumber == "10") {
             useButtonToLightUp(24);
         } else if (buttonNumber == "9") {
@@ -169,4 +170,24 @@ function turnDoorbellOn() {
     turnLedOn(23);
 }
 
+function toggleCall() {
+    if (callConnected == false) {
+        turnCallOn();
+        callConnected = true;
+    } else {
+        turnCallOff();
+        callConnected = false;
+    }
+}
 
+function turnCallOn() {
+    let message = new Paho.MQTT.Message("phone-call-start");
+    message.destinationName = "/smart-doorbell/sound";
+    client.send(message);
+}
+
+function turnCallOff() {
+    let message = new Paho.MQTT.Message("phone-call-stop");
+    message.destinationName = "/smart-doorbell/sound";
+    client.send(message);
+}

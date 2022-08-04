@@ -1,0 +1,83 @@
+body{
+    background-color: #6e5159;
+    color: #E3DAC9;
+    font-family: sans-serif;
+    margin: 0;
+	text-align: center;
+}
+.kontejner{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows:auto auto auto auto auto ;
+	gap: 20px;
+}
+.hlavicka{
+	grid-column: 1/3;
+	grid-row: 1;
+    background-color:#32322C ;
+    color: #87919E;
+}
+.fotecka{
+	grid-column: 1/3;
+	grid-row: 2;
+	height: 703px;
+	width: 937px;
+	background-color: black;
+	justify-self: center;
+}
+button{
+	width: 100px;
+	height: 50px;
+}
+.button1{
+	grid-column: 1;
+	grid-row: 3;
+	justify-self: center;
+}
+.button2{
+	grid-column: 2;
+	grid-row: 3;
+	justify-self: center;
+}
+.button3{
+	grid-column: 1;
+	grid-row: 4;
+	justify-self: center;
+}
+.button4{
+	grid-column: 2;
+	grid-row: 4;
+	justify-self: center;
+}
+
+.pata{
+
+	grid-column: 1/3;
+	grid-row:5;
+    color: #32322C;
+    background-color: #87919E;
+}
+
+
+
+.hlavicka{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	height: 50px;
+	text-align: center;
+}
+
+.strankaIndex{
+	grid-column: 1;
+	margin: 10px;
+}
+
+.strankaONas{
+	grid-column: 2;
+	margin: 10px;
+}
+
+.strankaObjednavka{
+	grid-column: 3;
+	margin: 10px;
+}

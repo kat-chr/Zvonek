@@ -1,7 +1,8 @@
 let client = new Paho.MQTT.Client("d57a0d1c39d54550b147b58411d86743.s2.eu.hivemq.cloud", 8884, "letni-skola" + Math.random());
 let displayingCamera = false;
 let callConnected = false;
-
+let mailboxOpen = false;
+let flagUp = false;
 
 client.connect({
     onSuccess: onConnect,
@@ -16,6 +17,7 @@ function onConnect() {
     client.onMessageArrived = onMessageArrived;
     client.subscribe("/smart-doorbell/photo/taken");
     client.subscribe("/smart-doorbell/button/#");
+    client.subscribe("/smart-doorbell/distance/measured");
 }
 
 function onMessageArrived(message) {
@@ -36,7 +38,7 @@ function onMessageArrived(message) {
         } else if (buttonNumber == "22") {
             toggleCall();
         } else if (buttonNumber == "10") {
-            useButtonToLightUp(24);
+            toggleMailbox();
         } else if (buttonNumber == "9") {
             useButtonToLightUp(24);
         } 
@@ -44,10 +46,12 @@ function onMessageArrived(message) {
     if ((message.destinationName.startsWith("/smart-doorbell/button/17")) && (message.payloadString == "released")) {
         turnLedOff(23);
     }
+    if (message.destinationName.startsWith("/smart-doorbell/distance/measured")) {
+        packageArrived();
+    }
 }
 
 let toggleLed = 0;
-
 
 // function zapnoutZvonek2(){
 //     casovac2 = setInterval(function(){
@@ -78,8 +82,6 @@ function servo1(){
     message.destinationName = "/smart-doorbell/servo/12";
     client.send(message);
 }
-
-
 
 function toggleRecording() {
     if (displayingCamera == false) {
@@ -117,6 +119,7 @@ function publishPhoto(message) {
     }
     let visualPhoto = document.querySelector("#photo");
     visualPhoto.src = message.payloadString;
+
     //console.log("obrazek: " + message.payloadString);
 }
 
@@ -173,10 +176,8 @@ function turnDoorbellOn() {
 function toggleCall() {
     if (callConnected == false) {
         turnCallOn();
-        callConnected = true;
     } else {
         turnCallOff();
-        callConnected = false;
     }
 }
 
@@ -184,11 +185,76 @@ function turnCallOn() {
     let message = new Paho.MQTT.Message("phone-call-start");
     message.destinationName = "/smart-doorbell/sound";
     client.send(message);
+    callConnected = true;
 }
-
 
 function turnCallOff() {
     let message = new Paho.MQTT.Message("phone-call-stop");
     message.destinationName = "/smart-doorbell/sound";
     client.send(message);
+    callConnected = false;
 }
+
+function toggleMailbox() {
+    if (mailboxOpen == false) {
+        openMailbox();
+    } else {
+        closeMailbox();
+    }
+}
+
+function openMailbox() {
+    let message = new Paho.MQTT.Message("180");
+    message.destinationName = "/smart-doorbell/servo/12";
+    client.send(message);
+    mailboxOpen = true;
+}
+
+function closeMailbox() {
+    let message = new Paho.MQTT.Message("90");
+    message.destinationName = "/smart-doorbell/servo/12";
+    client.send(message);
+    mailboxOpen = false;
+    tellMeWhenPackigeArrivesInMailbox();
+}
+
+function toggleFlag() {
+    if (flagUp == false) {
+        putFlagUp();
+    } else {
+        putFlagDown();
+    }
+}
+
+function putFlagUp() {
+    let message = new Paho.MQTT.Message("90");
+    message.destinationName = "/smart-doorbell/servo/13";
+    client.send(message);
+    flagUp = true;
+}
+
+function putFlagDown() {
+    let message = new Paho.MQTT.Message("270");
+    message.destinationName = "/smart-doorbell/servo/13";
+    client.send(message);
+    flagUp = false;
+}
+
+function tellMeWhenPackigeArrivesInMailbox() { // kam to dat??
+    let message = new Paho.MQTT.Message("notify-when-shorter-then(15.678)");
+    message.destinationName = "/smart-doorbell/distance";
+    client.send(message);
+}
+
+function packageArrived() {
+    console.log("package!!!!!");
+    if (flagUp == false) {
+        toggleFlag();
+    }
+}
+
+setTimeout(function () {
+    toggleMailbox()
+    toggleMailbox()
+}, 2000)
+

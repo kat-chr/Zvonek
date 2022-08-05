@@ -1,92 +1,103 @@
-body{
-    background-color: beige;
-    color: #1a1812;
-    font-family: sans-serif;
-    margin: 0;
+body {
+	background-color: beige;
+	color: #1a1812;
+	font-family: sans-serif;
+	margin: 0;
 	text-align: center;
 	min-height: 100vh;
 }
-a:visited{
+
+a:visited {
 	text-decoration: none;
 }
-.kontejner{
+
+.kontejner {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 100px auto 1fr 1fr auto ;
+	grid-template-rows: 100px auto 1fr 1fr auto;
 	gap: 20px;
 	min-height: 100vh;
 }
-.hlavicka{
+
+.hlavicka {
 	/* grid-column: 1/3;
 	grid-row: 1; */
-    background-color:lightblue ;
-    color: #87919E;
+	background-color: lightblue;
+	color: #87919E;
 	border: 2px solid;
 	border-radius: 8px;
 }
-.hlavicka a{
+
+.hlavicka a {
 	text-decoration: none;
 	color: #133869;
 }
-.fotecka{
+
+.fotecka {
 	grid-column: 1/3;
 	grid-row: 2;
 	width: 100%;
 	justify-self: center;
 }
-button{
+
+button {
 	width: 90%;
 	height: 100%;
-	font-size:medium;
+	font-size: medium;
 	border-radius: 8px;
 	justify-self: center;
 }
-.button1{
+
+.button1 {
 	grid-column: 1;
 	grid-row: 3;
 }
-.button2{
+
+.button2 {
 	grid-column: 2;
 	grid-row: 3;
 }
-.button3{
+
+.button3 {
 	grid-column: 1;
 	grid-row: 4;
 }
-.button4{
+
+.button4 {
 	grid-column: 2;
 	grid-row: 4;
 }
 
-.pata{
-    color: #32322C;
+.pata {
+	color: #32322C;
 }
-.hlavicka{
+
+.hlavicka {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	height: 100px;
 	text-align: center;
 	font-size: 20px;
-	 padding: 12px; 
-	
+	padding: 12px;
+
 }
 
-.strankaIndex{
+.strankaIndex {
 	grid-column: 1;
 	margin: 10px;
-	align-self:center
+	align-self: center
 }
 
-.strankaONas{
+.strankaONas {
 	grid-column: 2;
 	margin: 10px;
-	align-self:center;
+	align-self: center;
 }
 
-.strankaObjednavka{
+.strankaObjednavka {
 	grid-column: 3;
 	margin: 10px;
-	align-self:center;
+	align-self: center;
 }
 
 #photo {
@@ -94,157 +105,183 @@ button{
 }
 
 /* Tu zacina formular */
-.form-policko, .form-zaskrtavacie{
+.form-policko,
+.form-zaskrtavacie {
 	margin-bottom: 15px;
 }
 
-.form-policko label{
-	display: block; 	
+.form-policko label {
+	display: block;
 	color: black;
 	font-size: 70%;
 }
+
 .form-policko input,
-.form-policko textarea, 
-.form-policko select{
+.form-policko textarea,
+.form-policko select {
 	background-color: rgb(149, 168, 135);
 	border: 2px solid;
 	padding: 10px;
 	border-radius: 8px;
 }
+
 .form-policko input:focus,
-.form-policko textarea:focus, 
+.form-policko textarea:focus,
 .form-policko select:focus {
-	border:2px solid red;
+	border: 2px solid red;
 	background-color: rgb(178, 158, 196);
 	outline: 0;
 }
-#butnik{
+
+#butnik {
 	border-radius: 8px;
 	background-color: greenyellow;
 	width: 100px;
 	height: 50px;
 }
-.form-zaskrtavacie label{
+
+.form-zaskrtavacie label {
 	color: green;
 	font-size: 70%;
 }
+
 /* tu zacina stranka o nas */
-.blaboly{
-    margin: 5%;
+.blaboly {
+	margin: 5%;
 }
 
 /* .popisFirmy{
     margin-bottom: 50px;
 } */
-.kontejnerVsade{
-		display: grid;
-		grid-template-rows: auto 1fr auto;
-		min-height: 100vh;
+.kontejnerVsade {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
 }
-.kontejnerClenove img{
+
+.kontejnerClenove img {
 	width: 40%;
 	border: 2px white solid;
 	border-radius: 50%;
 	margin-top: 50px;
 }
-@media (min-width:600px){
-	.kontejner{
+
+@media (min-width:600px) {
+	.kontejner {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
-		grid-template-rows:100px auto auto auto;
+		grid-template-rows: 100px auto auto auto;
 		gap: 20px;
 	}
-	.fotecka{
-		grid-column: 2/3;
-		grid-row: 2;
+
+	.teloUzivatela {
+		display: grid;
+		grid-template-columns: 1fr auto 1fr;
+		grid-template-rows: 1fr 1fr;
+	}
+
+	.fotecka {
+		grid-column:2;
+		grid-row:1/3 ;
 		height: 703px;
 		width: 937px;
 		background-color: black;
 		justify-self: center;
 	}
-	button{
+
+	button {
 		width: 200px;
 		height: 100px;
 		font-size: 25px;
-	}
-	.button1{
-		grid-column: 2;
-		grid-row: 3;
-		justify-self: left;
-	}
-	.button2{
-		grid-column: 2;
-		grid-row: 3;
-		justify-self: right;
+		justify-self: center;
 	}
 
-	.button3{
+	.button1 {
+		grid-column: 1;
+		grid-row: 1;
+		/* justify-self: c; */
+	}
+
+	.button2 {
+		grid-column: 3;
+		grid-row: 1;
+		/* justify-self: right; */
+	}
+
+	.button3 {
 		grid-column: 1;
 		grid-row: 2;
-		justify-self: center;
+		/* justify-self: center; */
 	}
-	.button4{
+
+	.button4 {
 		grid-column: 3;
 		grid-row: 2;
-		justify-self: center;
+		/* justify-self: center; */
 	}
-	
-	.pata{
+
+	.pata {
 		color: #32322C;
 		background-color: #87919E;
 	}
-	.hlavicka{
+
+	.hlavicka {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 		height: 100px;
 		text-align: center;
 		font-size: 20px;
-		background-color:lightcyan ;
+		background-color: lightcyan;
 		color: #87919E;
 	}
-	
-	.strankaIndex{
+
+	.strankaIndex {
 		grid-column: 1;
 		margin: 10px;
 	}
-	
-	.strankaONas{
+
+	.strankaONas {
 		grid-column: 2;
 		margin: 10px;
 	}
-	
-	.strankaObjednavka{
+
+	.strankaObjednavka {
 		grid-column: 3;
 		margin: 10px;
 	}
-	/* tu zacinaju veci o nas */
-	
 
-	.blaboly{
+	/* tu zacinaju veci o nas */
+
+
+	.blaboly {
 		margin: 100px;
 	}
-	
-	
-	
-	.kontejnerClenove{
+
+
+
+	.kontejnerClenove {
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr 1fr;
 	}
-	.clen1{
+
+	.clen1 {
 		grid-column: 1;
 	}
-	.clen2{
+
+	.clen2 {
 		grid-column: 2;
 	}
-	.clen3{
+
+	.clen3 {
 		grid-column: 3;
 	}
-	.clen4{
+
+	.clen4 {
 		grid-column: 4;
 	}
-	
-	.popisFirmy{
+
+	.popisFirmy {
 		margin-bottom: 50px;
 	}
-	
+
 }

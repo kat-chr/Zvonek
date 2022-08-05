@@ -25,24 +25,31 @@ a:visited {
 	background-color: lightblue;
 	color: #87919E;
 	border: 2px solid;
-	border-radius: 8px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 
 .hlavicka a {
 	text-decoration: none;
 	color: #133869;
 }
-
+.teloUzivatela{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto 1fr 1fr;
+	gap: 20px;
+}
 .fotecka {
 	grid-column: 1/3;
-	grid-row: 2;
+	grid-row: 1;
 	width: 100%;
 	justify-self: center;
+	margin-top: 20px;
 }
 
 button {
 	width: 90%;
-	height: 100%;
+	height: 150px;
 	font-size: medium;
 	border-radius: 8px;
 	justify-self: center;
@@ -50,22 +57,22 @@ button {
 
 .button1 {
 	grid-column: 1;
-	grid-row: 3;
+	grid-row: 2;
 }
 
 .button2 {
 	grid-column: 2;
-	grid-row: 3;
+	grid-row: 2;
 }
 
 .button3 {
 	grid-column: 1;
-	grid-row: 4;
+	grid-row: 3;
 }
 
 .button4 {
 	grid-column: 2;
-	grid-row: 4;
+	grid-row: 3;
 }
 
 .pata {
@@ -101,7 +108,7 @@ button {
 }
 
 #photo {
-	width: 90%;
+	width: 100%;
 }
 
 /* Tu zacina formular */
@@ -178,6 +185,7 @@ button {
 		display: grid;
 		grid-template-columns: 1fr auto 1fr;
 		grid-template-rows: 1fr 1fr;
+		align-items: center;
 	}
 
 	.fotecka {
@@ -222,7 +230,6 @@ button {
 
 	.pata {
 		color: #32322C;
-		background-color: #87919E;
 	}
 
 	.hlavicka {

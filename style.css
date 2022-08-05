@@ -24,6 +24,10 @@ a:visited{
 	border: 2px solid;
 	border-radius: 8px;
 }
+.hlavicka a{
+	text-decoration: none;
+	color: #133869;
+}
 .fotecka{
 	grid-column: 1/3;
 	grid-row: 2;

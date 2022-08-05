@@ -26,7 +26,7 @@ body{
 	justify-self: center;
 }
 button{
-	width: 200px;
+	width: 40%;
 	height: 100px;
 	font-size: medium;
 	border-radius: 8px;
@@ -87,6 +87,42 @@ button{
 	width: 90%;
 }
 
+/* Tu zacina formular */
+.form-policko, .form-zaskrtavacie{
+	margin-bottom: 15px;
+}
+
+.form-policko label{
+	display: block; 	
+	color: black;
+	font-size: 70%;
+}
+.form-policko input,
+.form-policko textarea, 
+.form-policko select{
+	background-color: rgb(149, 168, 135);
+	border: 2px solid;
+	padding: 10px;
+	border-radius: 8px;
+}
+.form-policko input:focus,
+.form-policko textarea:focus, 
+.form-policko select:focus {
+	border:2px solid red;
+	background-color: rgb(178, 158, 196);
+	outline: 0;
+}
+#butnik{
+	border-radius: 8px;
+	background-color: greenyellow;
+	width: 100px;
+	height: 50px;
+}
+.form-zaskrtavacie label{
+	color: green;
+	font-size: 70%;
+}
+
 @media (min-width:600px){
 	.kontejner{
 		display: grid;
@@ -111,7 +147,7 @@ button{
 	button{
 		width: 200px;
 		height: 100px;
-		font-size: medium;
+		font-size: 25px;
 	}
 	.button1{
 		grid-column: 2;
@@ -123,6 +159,7 @@ button{
 		grid-row: 3;
 		justify-self: right;
 	}
+
 	.button3{
 		grid-column: 1;
 		grid-row: 2;

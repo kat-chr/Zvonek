@@ -253,8 +253,8 @@ function packageArrived() {
     }
 }
 
-setTimeout(function () {
-    toggleMailbox()
-    toggleMailbox()
-}, 2000)
+// setTimeout(function () {
+//     toggleMailbox()
+//     toggleMailbox()
+// }, 2000)
 

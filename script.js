@@ -238,7 +238,7 @@ function putFlagDown() {
 }
 
 function tellMeWhenPackigeArrivesInMailbox() { // kam to dat??
-    let message = new Paho.MQTT.Message("notify-when-shorter-then(15.678)");
+    let message = new Paho.MQTT.Message("notify-when-shorter-then(7.6)");
     message.destinationName = "/smart-doorbell/distance";
     client.send(message);
 }
@@ -250,11 +250,13 @@ function packageArrived() {
     }
 }
 
-setTimeout(function() {
-    let message = new Paho.MQTT.Message("measure-now");
-    message.destinationName = "/smart-doorbell/distance";
-    client.send(message);
-}, 2000)
+
+
+// setTimeout(function() {
+//     let message = new Paho.MQTT.Message("measure-now");
+//     message.destinationName = "/smart-doorbell/distance";
+//     client.send(message);
+// }, 2000)
 
 
 

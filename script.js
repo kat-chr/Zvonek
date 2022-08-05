@@ -186,7 +186,6 @@ function turnCallOn() {
     client.send(message);
 }
 
-
 function turnCallOff() {
     let message = new Paho.MQTT.Message("phone-call-stop");
     message.destinationName = "/smart-doorbell/sound";

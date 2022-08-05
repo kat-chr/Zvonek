@@ -52,7 +52,7 @@ function onMessageArrived(message) {
         } else if (buttonNumber == "27") {
             toggleRecording();
         } else if (buttonNumber == "22") {
-            toggleCall();
+            // toggleCall();
         } else if (buttonNumber == "10") {
             toggleMailbox();
         } else if (buttonNumber == "9") {
@@ -86,7 +86,7 @@ function toggleRecording() {
 }
 
 function turnCameraOn() {
-    let message = new Paho.MQTT.Message("recording-start-vflip");
+    let message = new Paho.MQTT.Message("recording-start");
     message.destinationName = "/smart-doorbell/photo";
     client.send(message);
     displayingCamera = true;
@@ -102,7 +102,7 @@ function turnCameraOff() {
 }
 
 function makeSnapshot() {
-    let message = new Paho.MQTT.Message("snapshot-vflip");
+    let message = new Paho.MQTT.Message("snapshot");
     message.destinationName = "/smart-doorbell/photo";
     client.send(message);
 }
@@ -163,9 +163,9 @@ function turnDoorbellOn() {
     message.destinationName = "/smart-doorbell/sound/1";
     client.send(message);
 
-    let message2 = new Paho.MQTT.Message("ring");
-    message2.destinationName = "/smart-doorbell/sound/2";
-    client.send(message2);
+    // let message2 = new Paho.MQTT.Message("ring");
+    // message2.destinationName = "/smart-doorbell/sound/2";
+    // client.send(message2);
 
     turnLedOn(23);
 }
@@ -231,7 +231,7 @@ function putFlagUp() {
 }
 
 function putFlagDown() {
-    let message = new Paho.MQTT.Message("270");
+    let message = new Paho.MQTT.Message("180");
     message.destinationName = "/smart-doorbell/servo/13";
     client.send(message);
     flagUp = false;
@@ -250,7 +250,11 @@ function packageArrived() {
     }
 }
 
-
+setTimeout(function() {
+    let message = new Paho.MQTT.Message("measure-now");
+    message.destinationName = "/smart-doorbell/distance";
+    client.send(message);
+}, 2000)
 
 
 

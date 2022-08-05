@@ -6,6 +6,9 @@ body{
 	text-align: center;
 	min-height: 100vh;
 }
+.monitor{
+	background-color: black;
+}
 a:visited{
 	text-decoration: none;
 }

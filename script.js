@@ -97,7 +97,7 @@ function turnCameraOff() {
     message.destinationName = "/smart-doorbell/photo";
     client.send(message);
     let visualPhoto = document.querySelector("#photo");
-    visualPhoto.src = "black.jpg"
+    visualPhoto.src = "black.png"
     displayingCamera = false;
 }
 

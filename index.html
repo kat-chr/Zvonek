@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,24 +8,28 @@
     <title>Ding Dong Design</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="kontejner">
-        <div class = 'hlavicka'>
-            <a class = "strankaIndex" href="index.html">Uživatelský panel</a>
-            <a class = "strankaONas" href="oNas.html">O nás</a>
-            <a class = "strankaObjednavka" href="objednavka.html">Objednávka</a>
+    <div class="kontejnerVsade">
+        <div class='hlavicka'>
+            <a class="strankaIndex" href="index.html">Uživatelský panel</a>
+            <a class="strankaONas" href="oNas.html">O nás</a>
+            <a class="strankaObjednavka" href="objednavka.html">Objednávka</a>
         </div>
-        <div class="fotecka"><img src="black.jpg" alt="" id="photo">
+        <div>
+            <div class="fotecka"><img src="black.jpg" alt="" id="photo">
+            </div>
+            <div class="button1"><button onclick="turnCameraOn()">Zapnout kameru</button></div>
+            <div class="button2"><button onclick="turnCameraOff()">Vypnout kameru</button></div>
+            <div class="button3"><button onclick="toggleCall()">Hovor</button></div>
+            <div class="button4"><button>Schránka</button></div>
         </div>
-        <div class="button1"><button onclick="turnCameraOn()">Zapnout kameru</button></div>
-        <div class="button2"><button onclick="turnCameraOff()">Vypnout kameru</button></div>
-        <div class="button3"><button onclick="toggleCall()" >Hovor</button></div>
-        <div class="button4"><button>Schránka</button></div>
-        <div class="stlpcek pata">
+        <div class=" pata">
             <h3>© Ding dong design</h3>
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

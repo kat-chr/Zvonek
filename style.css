@@ -11,6 +11,10 @@ body {
 	background-color: black;
 }
 
+.ikonky{
+	width: 25%;
+}
+
 a:visited {
 	text-decoration: none;
 }

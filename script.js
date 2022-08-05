@@ -3,6 +3,7 @@ let displayingCamera = false;
 let callConnected = false;
 let mailboxOpen = false;
 let flagUp = false;
+let toggleLed = 0;
 
 client.connect({
     onSuccess: onConnect,
@@ -50,32 +51,6 @@ function onMessageArrived(message) {
         packageArrived();
     }
 }
-
-let toggleLed = 0;
-
-// function zapnoutZvonek2(){
-//     casovac2 = setInterval(function(){
-//         message = new Paho.MQTT.Message("ring");
-//         message.destinationName = "/smart-doorbell/sound/2";
-//         client.send(message);
-//     }, 0.1)
-// }
-
-// function stopThisMadness2() {
-//     clearInterval(casovac2);
-// }
-
-// function zapnoutZvonek1(){
-//     casovac = setInterval(function(){
-//         message = new Paho.MQTT.Message("ring");
-//         message.destinationName = "/smart-doorbell/sound/1";
-//         client.send(message);
-//     }, 0.1)
-// }
-
-// function stopThisMadness1() {
-//     clearInterval(casovac);
-// }
 
 function servo1(){
     let message = new Paho.MQTT.Message(document.querySelector("#servoUhel").value);
@@ -253,8 +228,35 @@ function packageArrived() {
     }
 }
 
+
+
+
+
 // setTimeout(function () {
 //     toggleMailbox()
 //     toggleMailbox()
 // }, 2000)
 
+// function zapnoutZvonek2(){
+//     casovac2 = setInterval(function(){
+//         message = new Paho.MQTT.Message("ring");
+//         message.destinationName = "/smart-doorbell/sound/2";
+//         client.send(message);
+//     }, 0.1)
+// }
+
+// function stopThisMadness2() {
+//     clearInterval(casovac2);
+// }
+
+// function zapnoutZvonek1(){
+//     casovac = setInterval(function(){
+//         message = new Paho.MQTT.Message("ring");
+//         message.destinationName = "/smart-doorbell/sound/1";
+//         client.send(message);
+//     }, 0.1)
+// }
+
+// function stopThisMadness1() {
+//     clearInterval(casovac);
+// }

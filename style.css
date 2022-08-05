@@ -7,6 +7,10 @@ body {
 	min-height: 100vh;
 }
 
+.monitor{
+	background-color: black;
+}
+
 a:visited {
 	text-decoration: none;
 }
@@ -139,7 +143,7 @@ button:hover{
 .form-policko input,
 .form-policko textarea,
 .form-policko select {
-	background-color: rgb(149, 168, 135);
+	background-color: #F7F0DF;
 	border: 2px solid;
 	padding: 10px;
 	border-radius: 8px;
@@ -148,22 +152,39 @@ button:hover{
 .form-policko input:focus,
 .form-policko textarea:focus,
 .form-policko select:focus {
-	border: 2px solid red;
-	background-color: rgb(178, 158, 196);
+	border: 2px solid black;
+	background-color: #d0cabb;
 	outline: 0;
 }
 
 #butnik {
 	border-radius: 8px;
-	background-color: greenyellow;
+	background-color: #F7F0DF;
 	width: 100px;
 	height: 50px;
+	margin-bottom: 40px;
+}
+
+#butnik:hover{
+	background-color: #c1bbae;
 }
 
 .form-zaskrtavacie label {
-	color: green;
-	font-size: 70%;
+	
+	font-size:small;
 }
+
+
+
+#formular{
+	margin-top: 2%;
+}
+
+.form-policko label{
+	font-size: medium;
+}
+
+
 
 /* tu zacina stranka o nas */
 .blaboly {

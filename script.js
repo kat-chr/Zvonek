@@ -108,6 +108,9 @@ function makeSnapshot() {
 }
 
 function publishPhoto(message) {
+    if (message.payloadString == "camera-off") {
+        turnCameraOff();
+    }
     if (displayingCamera == false) {
         return;
     }

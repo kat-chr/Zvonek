@@ -208,7 +208,7 @@ function openMailbox() {
 }
 
 function closeMailbox() {
-    let message = new Paho.MQTT.Message("70");
+    let message = new Paho.MQTT.Message("65");
     message.destinationName = "/smart-doorbell/servo/12";
     client.send(message);
     mailboxOpen = false;

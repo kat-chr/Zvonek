@@ -15,21 +15,36 @@ client.connect({
 function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
     console.log("onConnect");
-    client.onMessageArrived = onMessageArrived;
+    let origin = document.querySelector("#origin").getAttribute("data-value"); // dostat z data-value dostat value
+    if (origin == "mobile") {
+        client.onMessageArrived = onMessageArrivedOnMobile;
+    } else if (origin == "monitor") {
+       client.onMessageArrived = onMessageArrived;
+    } else {
+        alert("Je tu BLBOST!!!!! Neznama volajici stranka!");
+    }
     client.subscribe("/smart-doorbell/photo/taken");
     client.subscribe("/smart-doorbell/button/#");
     client.subscribe("/smart-doorbell/distance/measured");
 }
 
+function onMessageArrivedOnMobile(message) {
+    console.log("onMessageArrived:" + message.destinationName);
+    console.log("onMessageArrived:" + message.payloadString);
+    if(message.destinationName.startsWith("/smart-doorbell/photo/taken")) {
+        publishPhoto(message);
+    }
+}
+
 function onMessageArrived(message) {
     console.log("onMessageArrived:" + message.destinationName);
     console.log("onMessageArrived:" + message.payloadString);
-    publishPhoto(message);
-    
+
     if((message.destinationName.startsWith("/smart-doorbell/button/")) && (message.payloadString == "pressed")) {
         let buttonNumber = message.destinationName.split("/")[3];
         console.log(buttonNumber);
         if (buttonNumber == "17") {
+            console.log("pressed")
             turnDoorbellOn();
             if (displayingCamera == false) {
                 turnCameraOn();
@@ -41,14 +56,18 @@ function onMessageArrived(message) {
         } else if (buttonNumber == "10") {
             toggleMailbox();
         } else if (buttonNumber == "9") {
-            useButtonToLightUp(24);
+            putFlagDown();
         } 
     }
     if ((message.destinationName.startsWith("/smart-doorbell/button/17")) && (message.payloadString == "released")) {
+        console.log("zvonek released");
         turnLedOff(23);
     }
     if (message.destinationName.startsWith("/smart-doorbell/distance/measured")) {
         packageArrived();
+    }
+    if(message.destinationName.startsWith("/smart-doorbell/photo/taken")) {
+        publishPhoto(message);
     }
 }
 
@@ -227,6 +246,9 @@ function packageArrived() {
         toggleFlag();
     }
 }
+
+
+
 
 
 

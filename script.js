@@ -245,9 +245,7 @@ function tellMeWhenPackigeArrivesInMailbox() { // kam to dat??
 
 function packageArrived() {
     console.log("package!!!!!");
-    if (flagUp == false) {
         toggleFlag();
-    }
 }
 
 

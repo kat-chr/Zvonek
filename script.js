@@ -15,7 +15,14 @@ client.connect({
 function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
     console.log("onConnect");
-    client.onMessageArrived = onMessageArrived;
+    let origin = document.querySelector("#origin").getAttribute("data-value"); // dostat z data-value dostat value
+    if (origin == "mobile") {
+        client.onMessageArrived = onMessageArrivedOnMobile;
+    } else if (origin == "monitor") {
+       client.onMessageArrived = onMessageArrived;
+    } else {
+        alert("Je tu BLBOST!!!!! Neznama volajici stranka!");
+    }
     client.subscribe("/smart-doorbell/photo/taken");
     client.subscribe("/smart-doorbell/button/#");
     client.subscribe("/smart-doorbell/distance/measured");
